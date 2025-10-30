@@ -2438,11 +2438,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/rlimtin/ASPNETCoreApplicationFinal/ASPNETCoreApplicationFinal/ASPNETCoreApplicationFinal.csproj",
+      "projectUniqueName": "/Users/rlimtin/Documents/GitHub/student_database/ASPNETCoreApplicationFinal/ASPNETCoreApplicationFinal/ASPNETCoreApplicationFinal.csproj",
       "projectName": "ASPNETCoreApplicationFinal",
-      "projectPath": "/Users/rlimtin/ASPNETCoreApplicationFinal/ASPNETCoreApplicationFinal/ASPNETCoreApplicationFinal.csproj",
+      "projectPath": "/Users/rlimtin/Documents/GitHub/student_database/ASPNETCoreApplicationFinal/ASPNETCoreApplicationFinal/ASPNETCoreApplicationFinal.csproj",
       "packagesPath": "/Users/rlimtin/.nuget/packages/",
-      "outputPath": "/Users/rlimtin/ASPNETCoreApplicationFinal/ASPNETCoreApplicationFinal/obj/",
+      "outputPath": "/Users/rlimtin/Documents/GitHub/student_database/ASPNETCoreApplicationFinal/ASPNETCoreApplicationFinal/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/rlimtin/.nuget/NuGet/NuGet.Config"
