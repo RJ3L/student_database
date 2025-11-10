@@ -24,7 +24,6 @@ namespace ASPNETCoreApplicationFinal.Controllers
         [Route("GetAllValues")]
         public string GetValues()
         {
-            Console.WriteLine("Check");
             try
             {
                 IDbConnection con = new MySqlConnection(_configuration.GetConnectionString("ValueAppCon").ToString());
@@ -71,7 +70,7 @@ namespace ASPNETCoreApplicationFinal.Controllers
         }
         [HttpPost]
         [Route("InsertValue")]
-        public string InsertValues([FromBody] Student student)
+        public async Task<IActionResult> InsertValues([FromBody] Student student)
         {
             Console.WriteLine("Check create");
             Regex validateEmailRegex = new Regex("^\\S+@\\S+\\.\\S+$");
@@ -92,7 +91,7 @@ namespace ASPNETCoreApplicationFinal.Controllers
                             int affectedRows = con.Execute(sql, studentData);
                             if (affectedRows > 0)
                             {
-                                return "Success";
+                                return Ok("Success");
                             }
                             else
                             {
@@ -102,28 +101,28 @@ namespace ASPNETCoreApplicationFinal.Controllers
                         }
                         else
                         {
-                            return "Invalid age";
+                            return new BadRequestObjectResult( new { message = "Invalid age"}); 
                         }
                     }
                     {
-                        return "Invalid Contact Number";
+                        return new BadRequestObjectResult( new { message = "Invalid Contact Number"});
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.Error.WriteLine(ex.Message);
-                    return ex.Message;
+                    return new BadRequestObjectResult( new { message = ex.Message});
                 }
             }
             else
             {
-                return "Invalid Email";
+                return new BadRequestObjectResult( new { message = "Invalid Email"});
             }
         }
 
         [HttpPut]
         [Route("Updatevalue")]
-        public string UpdateValues([FromBody] Student student)
+        public async Task<IActionResult> UpdateValues([FromBody] Student student)
         {
             Regex validateEmailRegex = new Regex("^\\S+@\\S+\\.\\S+$");
             if (validateEmailRegex.IsMatch(student.Email))
@@ -140,32 +139,33 @@ namespace ASPNETCoreApplicationFinal.Controllers
                             int affectedRows = con.Execute(sql, student);
                             if (affectedRows > 0)
                             {
-                                return "Success";
+                                return Ok("Success");
                             }
                             else
                             {
                                 response.StatusCode = 100;
                                 response.ErrorMessage = "No data found";
+                                return new BadRequestObjectResult( new { message = "No data found"});
                             }
                         }
                         else
                         {
-                            return "Invalid age";
+                            return new BadRequestObjectResult( new { message = "Invalid age"}); 
                         }
                     }
                     {
-                        return "Invalid Contact Number";
+                        return new BadRequestObjectResult( new { message = "Invalid Contact Number"});
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.Error.WriteLine(ex.Message);
-                    return ex.Message;
+                    return new BadRequestObjectResult( new { message = ex.Message});
                 }
             }
             else
             {
-                return "Invalid Email";
+                return new BadRequestObjectResult( new { message = "Invalid Email"});
             }
         }
         [HttpDelete]
